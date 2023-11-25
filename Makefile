@@ -6,22 +6,22 @@ startapp:
 # DEVELOPMENT
 
 run-dev:
-	docker-compose -f docker-compose.yml up
-	docker-compose -f docker-compose.yml logs -f
+	docker-compose -f docker-compose.dev.yml up
+	docker-compose -f docker-compose.dev.yml logs -f
 
 build-dev:
-	docker-compose -f docker-compose.yml up -d --build
+	docker-compose -f docker-compose.dev.yml up -d --build
 
 down-dev:
-	docker-compose -f docker-compose.yml down -v
+	docker-compose -f docker-compose.dev.yml down -v
 
 migrate-dev:
-	docker-compose -f docker-compose.yml exec web python manage.py migrate --noinput
+	docker-compose -f docker-compose.dev.yml exec web python manage.py migrate --noinput
 
 rebuild-dev: down-dev run-dev
 
 collect-static-dev:
-	docker-compose -f docker-compose.yml exec web python manage.py collectstatic --no-input --clear
+	docker-compose -f docker-compose.dev.yml exec web python manage.py collectstatic --no-input --clear
 
 # PRODUCTION
 
